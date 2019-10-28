@@ -15,13 +15,13 @@ module.exports = {
 	],
 	testEnvironment: '<rootDir>/tests/config/JestCustomEnvironment.js',
 	testMatch: [
-		'**/tests/**/*.spec.(js|ts)',
+		'<rootDir>/tests/**/*.spec.(js|ts)',
 	],
 	testURL: 'http://localhost/',
 	transform: {
 		'^.+\\.vue$': 'vue-jest',
 		'.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
-		'^.+\\.tsx?$': 'ts-jest',
+		'^.+\\.ts$': 'ts-jest',
 	},
 	transformIgnorePatterns: [
 		'/node_modules/',
@@ -35,4 +35,9 @@ module.exports = {
 		'!src/@types/**',
 	],
 	clearMocks: true,
+	globals: {
+		'ts-jest': {
+			babelConfig: true,
+		},
+	},
 };

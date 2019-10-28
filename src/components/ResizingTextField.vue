@@ -22,43 +22,43 @@ interface InputEventTarget {
 
 @Component
 export default class ResizingTextField extends Vue {
-		@Prop()
+	@Prop()
 	public value!: string;
 
-		@Prop( { type: Number, default: null } )
-		public maxlength!: number;
+	@Prop( { type: Number, default: null } )
+	public maxlength!: number;
 
-		public mounted(): void {
+	public mounted(): void {
+		this.resizeTextField();
+	}
+
+	public setValue( event: InputEvent ): void {
+		this.$emit( 'input', this.removeNewlines( event.target.value ) );
+
+		// make sure that even nodiff changes to the state will update our textarea
+		// a nodiff could be caused by pasting newlines only
+		this.$forceUpdate();
+		this.$nextTick().then( () => {
 			this.resizeTextField();
-		}
+		} );
+	}
 
-		public setValue( event: InputEvent ): void {
-			this.$emit( 'input', this.removeNewlines( event.target.value ) );
+	private removeNewlines( value: string ): string {
+		return value.replace( /\r?\n/g, '' );
+	}
 
-			// make sure that even nodiff changes to the state will update our textarea
-			// a nodiff could be caused by pasting newlines only
-			this.$forceUpdate();
-			this.$nextTick().then( () => {
-				this.resizeTextField();
-			} );
-		}
+	public resizeTextField(): void {
+		const textarea = this.$el as HTMLTextAreaElement;
 
-		private removeNewlines( value: string ): string {
-			return value.replace( /\r?\n/g, '' );
-		}
+		textarea.style.height = '0';
+		const border = this.getPropertyValueInPx( textarea, 'border-top-width' )
+			+ this.getPropertyValueInPx( textarea, 'border-bottom-width' );
+		textarea.style.height = `${this.$el.scrollHeight + border}px`;
+	}
 
-		public resizeTextField(): void {
-			const textarea = this.$el as HTMLTextAreaElement;
-
-			textarea.style.height = '0';
-			const border = this.getPropertyValueInPx( textarea, 'border-top-width' )
-				+ this.getPropertyValueInPx( textarea, 'border-bottom-width' );
-			textarea.style.height = `${this.$el.scrollHeight + border}px`;
-		}
-
-		private getPropertyValueInPx( element: HTMLElement, property: string ): number {
-			return parseInt( window.getComputedStyle( element ).getPropertyValue( property ) );
-		}
+	private getPropertyValueInPx( element: HTMLElement, property: string ): number {
+		return parseInt( window.getComputedStyle( element ).getPropertyValue( property ) );
+	}
 
 }
 </script>

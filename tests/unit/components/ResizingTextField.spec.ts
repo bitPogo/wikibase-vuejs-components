@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils';
+// @ts-ignore
 import ResizingTextField from '@/components/ResizingTextField.vue';
 
 describe( 'ResizingTextField', () => {
@@ -11,6 +12,7 @@ describe( 'ResizingTextField', () => {
 	it( 'shows its value prop as the textarea value', () => {
 		const value = 'hello';
 		const wrapper = mount( ResizingTextField, {
+		// @ts-ignore
 			propsData: {
 				value,
 			},
@@ -29,6 +31,7 @@ describe( 'ResizingTextField', () => {
 
 	it( 'applies the max length limit to the textarea, if supplied', () => {
 		const wrapper = mount( ResizingTextField, {
+		// @ts-ignore
 			propsData: {
 				maxlength: 8,
 			},
