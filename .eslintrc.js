@@ -27,7 +27,6 @@ module.exports = {
 		'function-paren-newline': [ 'error', 'consistent' ],
 		'filenames/match-exported': 'error',
 		'object-shorthand': [ 'error', 'always' ],
-
 		// diverging from Wikimedia rule set
 		'max-len': [ 'error', 120 ],
 		'comma-dangle': [ 'error', {
@@ -40,11 +39,9 @@ module.exports = {
 		'operator-linebreak': 'off',
 		'quote-props': 'off',
 		'valid-jsdoc': 'off',
-
 		// replacing from Wikimedia rule set
 		'semi': 'off',
 		'@typescript-eslint/semi': [ 'error', 'always' ],
-
 		'vue/html-indent': [ 'error', 'tab' ],
 		'vue/max-attributes-per-line': [ 'error', {
 			singleline: 3,
@@ -53,17 +50,15 @@ module.exports = {
 				allowFirstLine: false,
 			},
 		} ],
-
 		/* copied from eslint-config-wikimedia/client.json;
-         * TODO extend (part of) client.json again
-         * once it doesn’t pull in es5.json
-         */
+		 * TODO extend (part of) client.json again
+		 * once it doesn’t pull in es5.json
+		 */
 		'no-alert': 'error',
 		'no-console': 'error',
 		'no-implied-eval': 'error',
-
 		/* customize recommended */
-		'@typescript-eslint/array-type': [ 'error', { default: 'array' } ],
+		'@typescript-eslint/array-type': [ 'error', 'array' ],
 		'@typescript-eslint/ban-types': 'off',
 		'@typescript-eslint/camelcase': [ 'error', { 'properties': 'always' } ],
 		'@typescript-eslint/explicit-function-return-type': [ 'error', {
@@ -101,11 +96,9 @@ module.exports = {
 			},
 		} ],
 		'@typescript-eslint/unified-signatures': 'error',
-
 		// required
 		'@typescript-eslint/no-require-imports': 'off',
 		'@typescript-eslint/no-var-requires': 'off',
-
 		// we prefer expect().toHaveBeenCalled* over toBeCalled*
 		'no-restricted-properties': [
 			'error',

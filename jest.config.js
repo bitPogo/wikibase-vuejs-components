@@ -8,8 +8,7 @@ module.exports = {
 	moduleNameMapper: {
 		'^@/(.*)$': '<rootDir>/src/$1',
 	},
-	// setupTestFrameworkScriptFile: '<rootDir>/tests/config/setup.ts',
-	setupFilesAfterEnv: [ '<rootDir>/tests/config/setup.ts' ],
+	setupTestFrameworkScriptFile: '<rootDir>/tests/config/setup.ts',
 	snapshotSerializers: [
 		'jest-serializer-vue',
 	],
@@ -35,9 +34,4 @@ module.exports = {
 		'!src/@types/**',
 	],
 	clearMocks: true,
-	globals: {
-		'ts-jest': {
-			babelConfig: true,
-		},
-	},
 };

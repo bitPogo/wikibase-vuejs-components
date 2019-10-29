@@ -1,32 +1,28 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "module": "commonjs",
-
-    "outDir": "./dist",
-    "target": "es5",
-    "jsx": "preserve",
-    "sourceMap": true,
-    "importHelpers": true,
-    "declaration": true,
-    "declarationDir": "./dist",
-
+    "target": "esnext",
+    "module": "esnext",
     "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
     "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
     "noImplicitReturns": true,
     "noUnusedParameters": true,
     "noUnusedLocals": false,
+	"resolveJsonModule": true,
+    "baseUrl": ".",
     "types": [
       "webpack-env",
       "jest",
       "node"
     ],
     "typeRoots": [
-      "./node_modules/@types",
-      "./src/@types"
+        "./node_modules/@types",
+        "./src/@types"
     ],
     "paths": {
       "@/*": [
@@ -34,15 +30,18 @@
       ]
     },
     "lib": [
-      "es5",
-      "es6",
-      "dom"
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
     ]
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*.tsx",
     "src/**/*.vue",
-    "tests/**/*.ts"
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules"
