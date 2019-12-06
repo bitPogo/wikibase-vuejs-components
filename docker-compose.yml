@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+    node:
+        build:
+            context: ./
+            dockerfile: ./Dockerfile
+        image: wmde/wikibase-vuejs-components
+        volumes:
+            - '~/.npm:/.npm'
+            - './:/src:ro' # grant read access to allow e.g. jest watch to detect changes
+            - './:/app'
+        working_dir: /app
+        environment:
+            - NODE_DEBUG
+            - NODE_ENV
+            - DEBUG
+
+    storybook:
+        extends:
+            service: node
+        ports:
+            - '${STORYBOOK_PORT}:${STORYBOOK_PORT}'
+        command: 'npm run storybook -- -p ${STORYBOOK_PORT} --ci'
